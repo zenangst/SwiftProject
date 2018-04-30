@@ -1,7 +1,7 @@
 import UIKit
 
-extension UIStackView {
-  convenience init(_ direction: UILayoutConstraintAxis = .horizontal,
+public extension UIStackView {
+  public convenience init(_ direction: UILayoutConstraintAxis = .horizontal,
                    alignment: UIStackViewAlignment = .fill,
                    spacing: CGFloat,
                    views: [UIView]) {
@@ -11,7 +11,7 @@ extension UIStackView {
     self.spacing = spacing
   }
 
-  convenience init(_ direction: UILayoutConstraintAxis = .horizontal,
+  public convenience init(_ direction: UILayoutConstraintAxis = .horizontal,
                    alignment: UIStackViewAlignment = .fill,
                    spacing: CGFloat,
                    views: UIView ...) {
