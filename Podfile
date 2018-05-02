@@ -5,10 +5,18 @@ platform :ios, '9.0'
 use_frameworks!
 inhibit_all_warnings!
 
-pod 'Family'
+# Frameworks
 pod 'Blueprints'
-pod 'R.swift', '~> 4.0', configurations: 'Debug'
-pod 'SwiftLint', configurations: 'Debug'
+pod 'Differific'
+pod 'Family'
+pod 'Imaginary'
+pod 'UserInterface'
+
+# Utilities
+pod 'Sourcery'
+pod 'R.swift', :configuration => 'Debug'
+pod 'SwiftLint', :configuration => 'Debug'
+pod 'SwiftFormat/CLI', :configuration => 'Debug'
 
 target 'SwiftProject Staging'
 target 'SwiftProject Production'
