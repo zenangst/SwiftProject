@@ -1,6 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 use_frameworks!
 inhibit_all_warnings!
@@ -11,6 +11,7 @@ pod 'Differific'
 pod 'Family'
 pod 'Imaginary'
 pod 'UserInterface'
+pod 'Vaccine'
 
 # Utilities
 pod 'Sourcery'
