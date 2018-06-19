@@ -1,4 +1,5 @@
 import UIKit
+import Vaccine
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -8,30 +9,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    #if DEBUG
-    Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
-    #endif
-    loadInitialState()
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(didInject),
-                                           name: NSNotification.Name(rawValue: "INJECTION_BUNDLE_NOTIFICATION"),
-                                           object: nil)
+    Injection.load(loadApp, swizzling: true).add(observer: self, with: #selector(injected(_:)))
     return true
   }
 
   // MARK: - Initial state
 
-  private func loadInitialState() {
+  private func loadApp() {
     let window = UIWindow(frame: UIScreen.main.bounds)
     let controller = UIViewController()
     window.rootViewController = controller
     window.makeKeyAndVisible()
-    self.window = window
+
+    let completion = { self.window = window }
+    guard let currentWindow = self.window else { completion(); return }
+    UIView.transition(from: currentWindow, to: window,
+                      duration: UIView.inheritedAnimationDuration)
+    { _ in completion() }
   }
 
   // MARK: - Injection
 
-  @objc func didInject() {
-    loadInitialState()
+  @objc open func injected(_ notification: Notification) {
+    guard Injection.objectWasInjected(self, in: notification) else { return }
+    loadApp()
   }
 }
