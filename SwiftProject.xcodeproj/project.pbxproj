@@ -104,6 +104,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BD3BED3920D9304600467A63 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		BD4FCFBC2090FF2200824386 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,15 +162,16 @@
 			path = Info;
 			sourceTree = "<group>";
 		};
-		D570917A1E23B69300C9347B /* Source */ = {
+		D570917A1E23B69300C9347B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				D258F4D61E4088A70054F570 /* App */,
+				BD3BED3920D9304600467A63 /* Extensions */,
 				BD4FCFBE2090FF2200824386 /* Features */,
 				BD4FCFBD2090FF2200824386 /* Models */,
 				BD4FCFBC2090FF2200824386 /* Protocols */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = SOURCE_ROOT;
 		};
 		D5892C721E25169D00FFCF74 /* Tests */ = {
@@ -222,7 +231,7 @@
 				39BA4D395B97F580C3286020 /* Pods */,
 				D5C7F7411C3BC9CE008CDDBA /* Products */,
 				D57091751E23B69300C9347B /* Resources */,
-				D570917A1E23B69300C9347B /* Source */,
+				D570917A1E23B69300C9347B /* Sources */,
 				D5892C721E25169D00FFCF74 /* Tests */,
 			);
 			sourceTree = "<group>";
