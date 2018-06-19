@@ -11,6 +11,7 @@ pod 'Differific'
 pod 'Family'
 pod 'Imaginary'
 pod 'UserInterface'
+pod 'Vaccine'
 
 # Utilities
 pod 'Sourcery'
