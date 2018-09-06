@@ -21,11 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window.rootViewController = controller
     window.makeKeyAndVisible()
 
-    let completion = { self.window = window }
-    guard let currentWindow = self.window else { completion(); return }
+    let completion: (Bool) -> Void = { _ in self.window = window }
+    guard let currentWindow = self.window else { completion(true); return }
     UIView.transition(from: currentWindow, to: window,
-                      duration: UIView.inheritedAnimationDuration)
-    { _ in completion() }
+                      duration: UIView.inheritedAnimationDuration,
+                      completion: completion)
   }
 
   // MARK: - Injection
