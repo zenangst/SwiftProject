@@ -9,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    Injection.load(loadApp, swizzling: true).add(observer: self, with: #selector(injected(_:)))
+    Injection.load(then: loadApp, swizzling: true).add(observer: self, with: #selector(injected(_:)))
     return true
   }
 
