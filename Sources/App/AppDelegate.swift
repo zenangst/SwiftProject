@@ -9,29 +9,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    Injection.load(then: loadApp, swizzling: true).add(observer: self, with: #selector(injected(_:)))
+    Injection.load(then: { self.load(application) })
+      .add(observer: self, with: #selector(injected(_:)))
     return true
   }
 
   // MARK: - Initial state
 
-  private func loadApp() {
+  private func load(_ application: UIApplication) {
     let window = UIWindow(frame: UIScreen.main.bounds)
     let controller = UIViewController()
     window.rootViewController = controller
-    window.makeKeyAndVisible()
-
-    let completion: (Bool) -> Void = { _ in self.window = window }
-    guard let currentWindow = self.window else { completion(true); return }
-    UIView.transition(from: currentWindow, to: window,
-                      duration: UIView.inheritedAnimationDuration,
-                      completion: completion)
+    transition(from: self.window, to: window, then: { self.window = $0 })
   }
 
   // MARK: - Injection
 
   @objc open func injected(_ notification: Notification) {
-    guard Injection.objectWasInjected(self, in: notification) else { return }
-    loadApp()
+    guard Vaccine.Injection.objectWasInjected(self, in: notification) else { return }
+    load(UIApplication.shared)
   }
 }
